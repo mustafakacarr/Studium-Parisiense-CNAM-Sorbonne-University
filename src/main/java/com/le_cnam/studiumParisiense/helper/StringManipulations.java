@@ -120,14 +120,8 @@ public class StringManipulations {
         return indexingChars.get(indexingChar).isNecessaryToCreateNode();
     }
 
-    public static Nodes getNodeTypeFromIndexingChar(String value) {
-        for (Map.Entry<Character, IndexingInfo> entry : indexingChars.entrySet()) {
-            if (value.contains(String.valueOf(entry.getKey())) && entry.getValue().getNodeType() != null) {
-                // Return the first (and typically only) Node in the map
-                return entry.getValue().getNodeType();
-            }
-        }
-        throw new IllegalArgumentException("No node type found for: " + value);
+    public static Nodes getNodeTypeByIndexingChar(char indexingChar) {
+       return indexingChars.get(indexingChar).getNodeType();
     }
 
     public Relationships getRelationshipTypeFromIndexedNode(Nodes nodeType, Optional<String> tag) {
@@ -157,47 +151,51 @@ public class StringManipulations {
     }
 
 
-    public IndexedNode createIndexedNodeByValue(String tag, String value) {
-        Nodes nodeType = getNodeTypeFromIndexingChar(value);
+    public IndexedNode createIndexedNodeByValue(String tag, String value,char indexChar) {
+        Nodes nodeType = getNodeTypeByIndexingChar(indexChar);
         Relationships relationship = getRelationshipTypeFromIndexedNode(nodeType, Optional.of(tag));
-        String newValue = extractIndexingValue(value);
+        String newValue = extractIndexingValue(value, indexChar);
         System.out.println("Node type: " + nodeType + " Relationship: " + relationship + " Value: " + newValue + " Original value: " + value);
         return new IndexedNode(nodeType, relationship, newValue, value);
     }
 
-    public static String extractIndexingValue(String value) {
+    public static String extractIndexingValue(String value, char indexingChar) {
         System.out.println(value + " is the value");
         String originalValue = value;
-        for (Map.Entry<Character, IndexingInfo> entry : indexingChars.entrySet()) {
-            char indexingChar = entry.getKey();
-            IndexingInfo info = entry.getValue();
-            String charAsString = String.valueOf(indexingChar);
 
-            if (info.getIndexPosition() == IndexPositions.START_AND_END_WITH) {
-                String regex = "\\" + charAsString + "(.*?)" + "\\" + charAsString;
+        IndexingInfo info = indexingChars.get(indexingChar);
+        if (info == null) {
+            System.out.println("No indexing info found for char: " + indexingChar);
+            return value;
+        }
+
+        String charAsString = String.valueOf(indexingChar);
+
+        if (info.getIndexPosition() == IndexPositions.START_AND_END_WITH) {
+            String regex = "\\" + charAsString + "(.*?)" + "\\" + charAsString;
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(value);
+
+            if (matcher.find()) {
+                value = matcher.group(1).trim();
+            }
+        } else if (info.getIndexPosition() == IndexPositions.STARTS_WITH) {
+            System.out.println("Starts with: " + charAsString);
+            if (value.contains(charAsString)) {
+                String regex = "\\" + charAsString + "\\s*([^\\s.,;!?()]+)";
                 Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(value);
 
                 if (matcher.find()) {
+                    System.out.println("Found starts with: " + matcher.group(1) + " for value: " + value);
                     value = matcher.group(1).trim();
-                }
-            } else if (info.getIndexPosition() == IndexPositions.STARTS_WITH) {
-                System.out.println("Starts with: " + charAsString);
-                if (value.contains(charAsString)) {
-                    String regex = "\\" + charAsString + "\\s*([^\\s.,;!?]+)";
-                    Pattern pattern = Pattern.compile(regex);
-                    Matcher matcher = pattern.matcher(value);
-
-                    if (matcher.find()) {
-                        System.out.println("Found starts with: " + matcher.group(1) + " for value: " + value);
-                        value = matcher.group(1).trim();
-                    }
                 }
             }
         }
 
         return value.equals(originalValue) ? value : value.trim();
     }
+
 
 
     public static String clearValue(String value) {

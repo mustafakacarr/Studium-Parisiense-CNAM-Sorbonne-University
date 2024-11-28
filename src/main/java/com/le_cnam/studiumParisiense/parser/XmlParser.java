@@ -87,14 +87,12 @@ public class XmlParser {
                         parentProperties.put("createdBy", "AUTO-CREATED PARENT NODE");
 
                         parentNode = createNewNode(parentNodeType, parentProperties);
-
                     }
                 }
 
                 Map<String, Object> properties = new HashMap<>();
                 properties.put("createdBy", createdBy);
                 String property = Tags.fromCode(tag).getValue();
-
 
                 // Handle multi-instance nodes like Name_variants, Comments, References, etc.
                 DynamicEntity createdNode = null;
@@ -214,18 +212,15 @@ public class XmlParser {
                 commonAdditionalPropertiesForSpecificRelationships.computeIfAbsent(createdNode.getUUID(), k -> new HashMap<>()).putAll(propertyNameAndClearValue);
             }
         } else {
-            String baseValue = value; // Default to the whole value initially
-
-
+            String baseValue = value;
             for (char indexingChar : indexingChars) {
                 System.out.println("Processing indexing character: " + indexingChar + " for tag: " + tag + " and value: " + value);
-
 /**
  * WE WILL CREATE A NEW NODE HERE ACCORDING TO INDEXING CHAR.
  * FOR EXAMPLE, IF THE INDEXING CHAR IS '*', WE WILL CREATE A NEW LOCATION NODE AFTER CHECKED THE CURRENT LOCATION DOESN'T EXIST ON DB.
  **/
                 if (isNecessaryToCreateNewNodeByIndexChar(indexingChar)) {
-                    IndexedNode indexedNode = stringManipulations.createIndexedNodeByValue(tag, baseValue);
+                    IndexedNode indexedNode = stringManipulations.createIndexedNodeByValue(tag, baseValue, indexingChar);
                     processIndexing(createdNode, indexedNode);
                 } else {
                     Map<String, String> propertyNameAndClearValue = getPropertyNameAndClearValue(value);
