@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: StudiumParisiense
+
+  neo4j:
+    uri: bolt://localhost:7687
+    database: neo4j
+    username: neo4j
+    password: 12345
+    authentication:
+      username: neo4j
+      password: 12345

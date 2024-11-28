@@ -1,0 +1,243 @@
+{
+  "PERSON": {
+    "relations": [
+      {
+        "to": "NAME_VARIANTS",
+        "type": "HAS_NAME_VARIANT"
+      },
+      {
+        "to": "BIBLIOGRAPHY",
+        "type": "HAS_BIBLIOGRAPHY"
+      },
+      {
+        "to": "ORIGIN",
+        "type": "HAS_ORIGIN"
+      },
+      {
+        "to": "RELATIONAL_INSERTION",
+        "type": "HAS_RELATION"
+      },
+      {
+        "to": "COURSE",
+        "type": "HAS_COURSE"
+      },
+      {
+        "to": "ECCLESIASTICAL_CAREER",
+        "type": "HAS_ECCLESIASTICAL_CAREER"
+      },
+      {
+        "to": "PROFESSIONAL_CAREER",
+        "type": "HAS_PROFESSIONAL_CAREER"
+      },
+      {
+        "to": "POLITICAL_CAREER",
+        "type": "HAS_POLITICAL_CAREER"
+      },
+      {
+        "to": "VOYAGE",
+        "type": "HAS_VOYAGE"
+      },
+      {
+        "to": "COLLEGE",
+        "type": "HAS_COLLEGE"
+      }
+    ]
+  },
+  "NAME_VARIANTS": {
+    "relations": [
+    ]
+  },
+  "ECCLESIASTICAL_CAREER": {
+    "relations": [
+    ]
+  },
+  "TEXTUAL_PRODUCTION": {
+    "relations": [
+      {
+        "to": "LIBRARY",
+        "type": "STORED_IN"
+      },
+      {
+        "to": "REFERENCE",
+        "type": "HAS_REFERENCE"
+      }
+    ]
+  },
+  "COMMISSION": {
+    "relations": [
+      {
+        "to": "HOUSING",
+        "type": "ALLOCATED_TO"
+      }
+    ]
+  },
+  "HOUSING": {
+    "relations": [
+      {
+        "to": "PERSON",
+        "type": "OCCUPIED_BY"
+      },
+      {
+        "to": "INDIVIDUATION_SIGNS",
+        "type": "HAS_SIGN"
+      }
+    ]
+  },
+  "INDIVIDUATION_SIGNS": {
+    "relations": [
+      {
+        "to": "PERSON",
+        "type": "IDENTIFIES"
+      }
+    ]
+  },
+  "ORALITY": {
+    "relations": [
+      {
+        "to": "VARIOUS",
+        "type": "MENTIONS"
+      }
+    ]
+  },
+  "VARIOUS": {
+    "relations": [
+      {
+        "to": "PERSON",
+        "type": "MENTIONS_PERSON"
+      }
+    ]
+  },
+  "REFERENCE": {
+    "relations": [
+      {
+        "to": "TEXTUAL_PRODUCTION",
+        "type": "INCLUDES"
+      }
+    ]
+  },
+  "LIBRARY": {
+    "relations": [
+      {
+        "to": "TEXTUAL_PRODUCTION",
+        "type": "CONTAINS"
+      }
+    ]
+  },
+  "COURSE": {
+    "relations": [
+      {
+        "to": "PRE_UNIVERSITY_EDUCATION",
+        "type": "HAS_PRE_UNIVERSITY_EDUCATION"
+      },
+      {
+        "to": "UNIVERSITY_OR_STUDIUM",
+        "type": "HAS_UNIVERSITY_OR_STUDIUM"
+      },
+      {
+        "to": "CURRICULUM",
+        "type": "HAS_CURRICULUM"
+      },
+      {
+        "to": "INFORMATION_COLLEGE",
+        "type": "HAS_INFORMATION_COLLEGE"
+      },
+      {
+        "to": "FOUNDATION_COLLEGE",
+        "type": "HAS_FOUNDATION_COLLEGE"
+      }
+    ]
+  },
+  "ECCLESIASTICAL_CAREER": {
+    "relations": [
+      {
+        "to": "UNCERTAIN_ECCLESIASTICAL_STATUS",
+        "type": "HAS_UNCERTAIN_ECCLESIASTICAL_STATUS"
+      },
+      {
+        "to": "SECULAR_ECCLESIASTIC",
+        "type": "HAS_SECULAR_ECCLESIASTIC"
+      },
+      {
+        "to": "SECULAR_BENEFICES_HELD_BY_REGULAR_ECCLESIASTIC",
+        "type": "HAS_SECULAR_BENEFICES_HELD_BY_REGULAR_ECCLESIASTIC"
+      },
+      {
+        "to": "REGULAR_ECCLESIASTIC",
+        "type": "HAS_REGULAR_ECCLESIASTIC"
+      },
+      {
+        "to": "HIERARCHICAL_POSITION_IN_REGULAR_ORDER",
+        "type": "HAS_HIERARCHICAL_POSITION_IN_REGULAR_ORDER"
+      },
+      {
+        "to": "PAPAL_FUNCTIONS",
+        "type": "HAS_PAPAL_FUNCTIONS"
+      },
+      {
+        "to": "SCHOOL_MASTER_OR_TUTOR",
+        "type": "HAS_SCHOOL_MASTER_OR_TUTOR"
+      },
+      {
+        "to": "ECCLESIASTICAL_FUNCTIONS",
+        "type": "HAS_ECCLESIASTICAL_FUNCTIONS"
+      },
+      {
+        "to": "COMMUNITY_FOUNDATION",
+        "type": "HAS_COMMUNITY_FOUNDATION"
+      }
+    ]
+  },
+  "PROFESSIONAL_CAREER": {
+    "relations": [
+      {
+        "to": "LEGAL_PROFESSIONAL",
+        "type": "HAS_LEGAL_PROFESSIONAL"
+      },
+      {
+        "to": "PROPERTY_ADMINISTRATOR",
+        "type": "HAS_PROPERTY_ADMINISTRATOR"
+      },
+      {
+        "to": "ADMINISTRATION_ROYAL",
+        "type": "HAS_ADMINISTRATION_ROYAL"
+      },
+      {
+        "to": "RELIGIOUS_FUNCTIONS_FOR_COURT",
+        "type": "HAS_RELIGIOUS_FUNCTIONS_FOR_COURT"
+      },
+      {
+        "to": "CULTURAL_FUNCTIONS_FOR_COURT",
+        "type": "HAS_CULTURAL_FUNCTIONS_FOR_COURT"
+      },
+      {
+        "to": "UNIVERSITY",
+        "type": "HAS_UNIVERSITY"
+      },
+      {
+        "to": "CHAMBER_VALET",
+        "type": "HAS_CHAMBER_VALET"
+      },
+      {
+        "to": "LOCAL_ADMINISTRATION_FUNCTIONS",
+        "type": "HAS_LOCAL_ADMINISTRATION_FUNCTIONS"
+      },
+      {
+        "to": "REPRESENTATIONS_INCLUDING_ECLESIASTICAL_DIPLOMACY",
+        "type": "HAS_REPRESENTATIONS_INCLUDING_ECLESIASTICAL_DIPLOMACY"
+      },
+      {
+        "to": "MERCHANT_ARTISAN_SOLDIER",
+        "type": "HAS_MERCHANT_ARTISAN_SOLDIER"
+      },
+      {
+        "to": "DOCTOR_SURGEON",
+        "type": "HAS_DOCTOR_SURGEON"
+      },
+      {
+        "to": "DIVERSE_PROFESSIONS",
+        "type": "HAS_DIVERSE_PROFESSIONS"
+      }
+    ]
+  }
+}
+

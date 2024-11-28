@@ -1,0 +1,34 @@
+{
+  "REFERENCE": {
+    "rules": [
+      {
+        "condition": "BY_TAG",
+        "specialTag": "r",
+        "relation": "HAS_REFERENCE"
+      }
+    ]
+  },
+  "COMMENT": {
+    "rules": [
+      {
+        "condition": "BY_VALUE",
+        "startsWith": "/",
+        "relation": "HAS_COMMENT"
+      }
+    ]
+  },
+  "RELATIONAL_INSERTION": {
+    "rules": [
+      {
+        "condition": "BY_TAG",
+        "specialTag": "3b",
+        "relation": "HAS_FAMILY_RELATION"
+      },
+      {
+        "condition": "BY_TAG",
+        "specialTag": "3d",
+        "relation": "HAS_SERVICE_RELATION"
+      }
+    ]
+  }
+}
